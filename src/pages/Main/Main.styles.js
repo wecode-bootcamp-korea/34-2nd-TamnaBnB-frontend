@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 export const MainWrapper = styled.div`
   ${props => props.theme.variables.flex('column', '', 'center')}
-  margin-top: 100px;
 `;
 
 export const MainThemeWrapper = styled.div`
   ${({ theme }) => theme.variables.flex()};
   position: fixed;
-  width: 1550px;
-  height: 100px;
+  top: 80px;
+  width: 100vw;
+  height: 80px;
   background-color: white;
-  z-index: 99;
+  z-index: 2;
 `;
 
 export const MainThemes = styled.ul`
@@ -22,7 +22,7 @@ export const MainThemes = styled.ul`
 
 export const FilterBtn = styled.button`
   position: absolute;
-  right: 13px;
+  right: 180px;
   width: 80px;
   height: 50px;
   background-color: white;
@@ -36,5 +36,5 @@ export const CardsWrapper = styled.div`
   grid-auto-rows: 377px;
   column-gap: 18px;
   row-gap: 45px;
-  margin-top: 120px;
+  margin-top: 200px;
 `;

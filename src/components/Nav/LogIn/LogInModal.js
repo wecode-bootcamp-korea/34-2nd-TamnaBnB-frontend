@@ -23,7 +23,6 @@ const ModalOutside = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 const ModalItself = styled.div`
@@ -32,8 +31,8 @@ const ModalItself = styled.div`
   height: 500px;
   background-color: white;
   position: fixed;
-  left: 37%;
-  top: 13%;
+  left: 40%;
+  top: 15%;
   z-index: 200;
   border-radius: 7px;
 `;

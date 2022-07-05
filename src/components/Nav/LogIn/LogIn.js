@@ -27,7 +27,7 @@ const LogIn = ({ closeAllModals }) => {
                 {!localStorage.getItem('token') ? (
                   <ProfileIcon />
                 ) : (
-                  <UserPicture />
+                  <UserPicture src={localStorage.getItem('userImage')} />
                 )}
               </ButtonWrapper>
             </LoginButton>
@@ -95,9 +95,11 @@ const ProfileIcon = styled(FaUserCircle)`
   color: #717171;
   font-size: 43px;
 `;
-const UserPicture = styled(BsEmojiSmile)`
+const UserPicture = styled.img`
   margin-left: 7px;
-  font-size: 30px;
-  font-weight: bold;
+  width: 30px;
+  right: 30px;
+  border-radius: 50%;
+  object-fit: contain;
 `;
 export default LogIn;

@@ -28,7 +28,7 @@ const KakaoModal = () => {
 const ModalContext = styled.div`
   ${({ theme }) => theme.variables.flex('column', '', 'center')}
   height: 100%;
-  z-index: 1000;
+  z-index: 200;
 `;
 const ModalLogoBox = styled.div`
   width: 200px;

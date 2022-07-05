@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import SearchClickedModal from './Search/SearchClickedModal';
 import SelectRegion from './Search/SearchModal/SelectRegion';
 import SelectVisitors from './Search/SearchModal/SelectVisitors';
-import Calendar from '../Calendar/Calendar';
+import SelectDate from './Search/SearchModal/SelectDate';
 
 const Nav = () => {
   const [searchModal, setSearchModal] = useState(false);
@@ -21,7 +21,7 @@ const Nav = () => {
 
   const [adultCount, setAdultCount] = useState(0);
 
-  const [ChildrenCount, setChildrenCount] = useState(0);
+  const [childrenCount, setChildrenCount] = useState(0);
 
   const [infantCount, setInfantCount] = useState(0);
 
@@ -43,11 +43,11 @@ const Nav = () => {
   };
 
   const addChildrenCount = () => {
-    ChildrenCount >= 0 && setChildrenCount(ChildrenCount + 1);
+    childrenCount >= 0 && setChildrenCount(childrenCount + 1);
   };
 
   const removeChildrenCount = () => {
-    ChildrenCount && setChildrenCount(ChildrenCount - 1);
+    childrenCount && setChildrenCount(childrenCount - 1);
   };
   const addInfantCount = () => {
     infantCount < 6 && setInfantCount(infantCount + 1);
@@ -122,7 +122,7 @@ const Nav = () => {
             setVisitorsModal={setVisitorsModal}
             clickedCity={clickedCity}
             adultCount={adultCount}
-            ChildrenCount={ChildrenCount}
+            childrenCount={childrenCount}
             infantCount={infantCount}
             petCount={petCount}
             checkInDate={checkInDate}
@@ -137,14 +137,19 @@ const Nav = () => {
         />
       )}
       {whenModal && (
-        <Calendar onChange={onChange} startDate={startDate} endDate={endDate} />
+        <SelectDate
+          onChange={onChange}
+          startDate={startDate}
+          endDate={endDate}
+          closeWhenModal={() => setWhenModal(!whenModal)}
+        />
       )}
       {visitorsModal && (
         <SelectVisitors
           closeVisitorsModal={() => setVisitorsModal(!visitorsModal)}
           adultCount={adultCount}
           setAdultCount={setAdultCount}
-          ChildrenCount={ChildrenCount}
+          childrenCount={childrenCount}
           setChildrenCount={setChildrenCount}
           infantCount={infantCount}
           setInfantCount={setInfantCount}
@@ -170,6 +175,8 @@ const Navigation = styled.nav`
   width: 100%;
   height: ${props => (props.primary ? '80px' : '160px')};
   border-bottom: 1px solid #ebebeb;
+  background-color: white;
+  z-index: 100;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -177,7 +184,6 @@ const Wrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 80px;
-  transition: 0.3s;
 `;
 const Logo = styled.div`
   width: 300px;
