@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoSearchCircle } from 'react-icons/io5';
 
@@ -12,7 +13,7 @@ const SearchClickedModal = ({
   setVisitorsModal,
   clickedCity,
   adultCount,
-  ChildrenCount,
+  childrenCount,
   infantCount,
   petCount,
   checkInDate,
@@ -32,6 +33,15 @@ const SearchClickedModal = ({
     setVisitorsModal(!visitorsModal);
     setWhereModal(false);
     setWhenModal(false);
+  };
+  const navigate = useNavigate();
+  const sendSearchInfo = () => {
+    navigate(
+      `maplist/1/rooms?max_guest=${
+        adultCount + childrenCount + infantCount
+      }&max_pet=${petCount}&check_in=${checkInDate}&check_out=${checkOutDate}&region=${clickedCity}`
+    );
+    closeAllModals();
   };
 
   return (
@@ -63,11 +73,11 @@ const SearchClickedModal = ({
           <TitleWrapper>
             <MainTitle>여행자</MainTitle>
             <SubTitle>
-              게스트 {adultCount + ChildrenCount + infantCount + petCount}명
+              게스트 {adultCount + childrenCount + infantCount + petCount}명
             </SubTitle>
           </TitleWrapper>
         </Visitors>
-        <SearchIcon onClick={closeAllModals} />
+        <SearchIcon onClick={sendSearchInfo} />
       </ModalInputBtn>
     </>
   );
@@ -78,7 +88,6 @@ const ModalOutside = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 30;
 `;
 
 const ModalHead = styled.div`
@@ -86,7 +95,6 @@ const ModalHead = styled.div`
   top: 3%;
   left: 48%;
   width: 55px;
-  z-index: 50;
   border-radius: 7px;
 `;
 

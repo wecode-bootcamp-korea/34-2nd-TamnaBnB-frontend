@@ -10,11 +10,12 @@ const Kakao = () => {
   }).code;
 
   useEffect(() => {
-    fetch(`http://10.58.5.52:8000/users/kakao-signin?code=${code}`)
+    fetch(`http://10.58.7.194:8000/users/kakao-signin?code=${code}`)
       .then(res => res.json())
       .then(data => {
         if (data.access_token) {
           localStorage.setItem('token', data.access_token);
+          localStorage.setItem('userImage', data.user_image);
           window.open('http://localhost:3000', '_self');
         } else {
           alert('로그인 실패');

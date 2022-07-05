@@ -21,21 +21,17 @@ const SelectRegion = ({ closeWhereModal, setClickedCity }) => {
     </>
   );
 };
-const ModalOutside = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-`;
+const ModalOutside = styled.div``;
 const SelectWrapper = styled.div`
-  position: absolute;
-  left: 27%;
-  top: 22.4%;
+  position: fixed;
+  left: 32%;
+  top: 18%;
   width: 200px;
   height: 100px;
   background-color: white;
   border-radius: 15px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  z-index: 100;
+  z-index: 1000;
 `;
 const JejuCity = styled.button`
   ${({ theme }) => theme.variables.btnTransparent}

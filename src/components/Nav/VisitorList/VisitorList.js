@@ -8,7 +8,7 @@ import { MdCancel } from 'react-icons/md';
 
 const VisitorList = ({
   adultCount,
-  ChildrenCount,
+  childrenCount,
   infantCount,
   petCount,
   addAdultCount,
@@ -40,7 +40,7 @@ const VisitorList = ({
           <CountVisitors>{adultCount}</CountVisitors>
           <PlusBtn
             onClick={addAdultCount}
-            disabled={ChildrenCount + adultCount === 16}
+            disabled={childrenCount + adultCount === 16}
           >
             <PlusIcon />
           </PlusBtn>
@@ -56,14 +56,14 @@ const VisitorList = ({
         <CountBox>
           <MinusBtn
             onClick={removeChildrenCount}
-            disabled={ChildrenCount === 0}
+            disabled={childrenCount === 0}
           >
             <MinusIcon />
           </MinusBtn>
-          <CountVisitors>{ChildrenCount}</CountVisitors>
+          <CountVisitors>{childrenCount}</CountVisitors>
           <PlusBtn
             onClick={addChildrenCount}
-            disabled={ChildrenCount + adultCount === 16}
+            disabled={childrenCount + adultCount === 16}
           >
             <PlusIcon />
           </PlusBtn>
@@ -121,8 +121,8 @@ const VisitorInfoWrapper = styled.div`
 const RestBtn = styled.button`
   position: fixed;
   cursor: pointer;
-  right: 500px;
-  top: 100px;
+  right: 690px;
+  top: 99px;
   width: 35px;
   height: 35px;
   ${({ theme }) => theme.variables.btnTransparent}
