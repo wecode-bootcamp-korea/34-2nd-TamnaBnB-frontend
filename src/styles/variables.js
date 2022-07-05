@@ -14,6 +14,11 @@ const variables = {
     left: 50%;
     transform: translate(-50%, -50%);
   `,
+
+  btnTransparent: css`
+    background-color: transparent;
+    border-color: transparent;
+  `,
 };
 
 export default variables;
