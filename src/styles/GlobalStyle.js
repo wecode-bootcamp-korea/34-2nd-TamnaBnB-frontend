@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   a, button {
-     cursor: pointer;
+    cursor: pointer;
   }
 
   a{
