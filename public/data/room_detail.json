@@ -1,0 +1,65 @@
+{
+  "room_info": [
+    {
+      "id": 4,
+      "name": "한라산에 흑돼지",
+      "description": "한라산을 먹고 자란 흑돼지를 만나볼 수 있는 마운틴 뷰 숙소",
+      "thumbnail_img": "https://cdn.pixabay.com/photo/2013/09/25/18/02/house-186400_960_720.jpg",
+      "price": "52550.00",
+      "max_guest": 4,
+      "max_pet": 5,
+      "check_in": "15:00",
+      "check_out": "12:00",
+      "bedroom": "1",
+      "bed_count": "1",
+      "latitude": "33.242565",
+      "longitude": "126.553494",
+      "address": "제주특별자치도 서귀포시 서홍동 744-25",
+      "region": "서귀포시",
+      "types": ["집 전체", "다인실"],
+      "facilites": [
+        "수영장",
+        "와이파이",
+        "주방",
+        "무료 주차 공간",
+        "반려동물 동반 허용",
+        "사료와 물을 담을 그릇"
+      ],
+      "categories": [" 펜션", " 해변"],
+      "host": {
+        "id": 1,
+        "name": "We.Code",
+        "nickname": null,
+        "profile_img": "https://cdn.pixabay.com/photo/2017/11/06/13/45/cap-2923682__340.jpg",
+        "is_super_host": true
+      },
+      "review": {
+        "ratings_count": 3,
+        "ratings_avg": "4.000000",
+        "user": [
+          {
+            "id": 4,
+            "name": "김민제",
+            "profile_img": "https://cdn.pixabay.com/photo/2014/11/29/19/33/bald-eagle-550804__340.jpg",
+            "content": "제주살이 15일 여정의 첫숙소였는데 너무 만족합니다..제숙소는 2층이었는데 테라스밖의 풍경이 마치 유럽에 와 있는느낌이랄까? 건축물이 약간 연식이 있긴하지만 나름대로 의 운치가 있었습니다 이른아침 동틀때의 뷰는 환상 그자체였습니다 또한 해가진 밤의풍경은 정원에 설치되어있는 조명으로 인해 또다른 운치를 자아내고 풀벌레소리와 함께 내방앞에 자리한 나무위의 새소리는 환상의 하모니를 감상케 하는 분위기였습니다 .... 일주일을 묶고 서귀포로 이동하였는데 다시금 그곳 성산이 떠오를 만큼 아름다운 숙소랍니다~~",
+            "created_at": "2022-07-08 15:47"
+          },
+          {
+            "id": 8,
+            "name": "손홍민",
+            "profile_img": "https://cdn.pixabay.com/photo/2017/08/30/23/42/football-2698974__340.jpg",
+            "content": "흠냐…",
+            "created_at": "2022-07-08 15:47"
+          },
+          {
+            "id": 9,
+            "name": "정이스",
+            "profile_img": "https://cdn.pixabay.com/photo/2020/10/04/10/43/horse-5625922__340.jpg",
+            "content": "제주도 한달살이 잘 쉬다가요~! 매일매일 흑돼지 먹다가 제가 돼지가 됐답니다",
+            "created_at": "2022-07-08 15:49"
+          }
+        ]
+      }
+    }
+  ]
+}
