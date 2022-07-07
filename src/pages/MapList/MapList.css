@@ -1,0 +1,28 @@
+.toggleListWrapper {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100vh;
+  background-color: rgb(245, 232, 205);
+  z-index: 2;
+  overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.toggleList {
+  width: 90%;
+  height: max-content;
+  background-color: rgb(187, 231, 91, 0.6);
+}
+
+h1 {
+  height: 2000px;
+  width: 218px;
+  background-color: rgb(51, 113, 46);
+}
