@@ -6,8 +6,6 @@ const DetailsMap = () => {
   const mapId = useRef();
 
   useEffect(() => {
-    // let container = document.getElementById('map');
-
     const options = {
       center: new kakao.maps.LatLng(33.242565, 126.553494),
       level: 3,

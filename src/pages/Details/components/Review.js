@@ -3,107 +3,116 @@ import styled from 'styled-components';
 import ReviewModal from './ReviewModal';
 import variables from '../../../styles/variables';
 
-const Review = () => {
+const Review = ({ roomDetailData }) => {
   const [grade, setGrade] = useState([]);
-  const [comment, setComment] = useState([]);
   const [isModalOn, setIsModalOn] = useState(false);
 
-  useEffect(() => {
-    fetch('data/detailsBottomData/detailsStarData.json')
-      .then(res => res.json())
-      .then(data => setGrade(data));
-  }, []);
+  const { review, id } = roomDetailData;
 
   useEffect(() => {
-    fetch('data/detailsBottomData/detailsReviewData.json')
+    fetch('/data/detailsBottomData/detailsStarData.json')
       .then(res => res.json())
-      .then(data => setComment(data));
+      .then(data => setGrade(data));
   }, []);
 
   const handleModal = () => {
     setIsModalOn(!isModalOn);
   };
+
+  const rating_average = Number(review.ratings_avg);
+  const ratings_count = review.ratings_count;
+  const reviews = review.info;
   return (
     <div>
       <ReviewArea>
-        <div>후기 아직 없음</div>
-
-        <ReviewSection>
-          <ReviewTop>
-            <ReviewTitle>
-              <ReviewStar>
-                <ReviewStarTxt>★4.9ㆍ후기 30개</ReviewStarTxt>
-              </ReviewStar>
-            </ReviewTitle>
-            <ReviewGauge>
-              {grade.map(({ id, item, grade, percent }) => {
-                return (
-                  <ReviewGaugeEle key={id}>
-                    <ReviewGaugeTxt>{item}</ReviewGaugeTxt>
-                    <ReviewGaugePoint>
-                      <ReviewBarMax>
-                        <ReviweBar percent={percent} />
-                      </ReviewBarMax>
-                      <ReviewBarPoint> {grade}</ReviewBarPoint>
-                    </ReviewGaugePoint>
-                  </ReviewGaugeEle>
-                );
-              })}
-            </ReviewGauge>
-          </ReviewTop>
-          <ReviewBottom>
-            <ReviewRead>
-              {comment.map(
-                ({
-                  id,
-                  profile_img,
-                  name,
-                  created_at,
-                  content,
-                  userTxtMore,
-                }) => {
+        {ratings_count === 0 ? (
+          <ReviewNotYet>★ 후기 없음</ReviewNotYet>
+        ) : (
+          <ReviewSection>
+            <ReviewTop>
+              <ReviewTitle>
+                <ReviewStar>
+                  <ReviewStarTxt>
+                    ★{rating_average.toFixed(2)}ㆍ후기 {ratings_count}개
+                  </ReviewStarTxt>
+                </ReviewStar>
+              </ReviewTitle>
+              <ReviewGauge>
+                {grade.map(({ id, item, grade, percent }) => {
                   return (
-                    <ReviewUserBox key={id}>
-                      <ReviewUser>
-                        <ReviewUserPhoto>
-                          <UserImg src={profile_img} />
-                        </ReviewUserPhoto>
-                        <ReviewUserInfo>
-                          <ReviewUserName>{name}</ReviewUserName>
-                          <ReviewUserDate>{created_at}</ReviewUserDate>
-                        </ReviewUserInfo>
-                      </ReviewUser>
-                      <ReviewUserTxtBox>
-                        <ReviewUserTxt>{content}</ReviewUserTxt>
-                        <ReviewUserTxtMore>{userTxtMore} </ReviewUserTxtMore>
-                      </ReviewUserTxtBox>
-                    </ReviewUserBox>
+                    <ReviewGaugeEle key={id}>
+                      <ReviewGaugeTxt>{item}</ReviewGaugeTxt>
+                      <ReviewGaugePoint>
+                        <ReviewBarMax>
+                          <ReviweBar percent={percent} />
+                        </ReviewBarMax>
+                        <ReviewBarPoint>{grade}</ReviewBarPoint>
+                      </ReviewGaugePoint>
+                    </ReviewGaugeEle>
                   );
-                }
-              )}
-            </ReviewRead>
-            <ReviewBottomButton>
-              <ReviewAll>
-                <ReviewButton onClick={handleModal}>
-                  <ReviewAllButtonSpan>후기 모두 보기</ReviewAllButtonSpan>
-                </ReviewButton>
-              </ReviewAll>
-              <ReviewWrite>
-                <ReviewButton onClick={handleModal}>
-                  <ReviewWriteButtonSpan>후기 작성 하기</ReviewWriteButtonSpan>
-                </ReviewButton>
-              </ReviewWrite>
-            </ReviewBottomButton>
-          </ReviewBottom>
-        </ReviewSection>
+                })}
+              </ReviewGauge>
+            </ReviewTop>
+            <ReviewBottom>
+              <ReviewRead>
+                {reviews &&
+                  reviews.map(
+                    ({
+                      id,
+                      user_profile_img,
+                      user_name,
+                      created_at,
+                      content,
+                      userTxtMore,
+                    }) => {
+                      return (
+                        <ReviewUserBox key={id}>
+                          <ReviewUser>
+                            <ReviewUserPhoto>
+                              <UserImg src={user_profile_img} />
+                            </ReviewUserPhoto>
+                            <ReviewUserInfo>
+                              <ReviewUserName>{user_name}</ReviewUserName>
+                              <ReviewUserDate>{created_at}</ReviewUserDate>
+                            </ReviewUserInfo>
+                          </ReviewUser>
+                          <ReviewUserTxtBox>
+                            <ReviewUserTxt>{content}</ReviewUserTxt>
+                            <ReviewUserTxtMore>
+                              {userTxtMore}{' '}
+                            </ReviewUserTxtMore>
+                          </ReviewUserTxtBox>
+                        </ReviewUserBox>
+                      );
+                    }
+                  )}
+              </ReviewRead>
+              <ReviewBottomButton>
+                <ReviewAll>
+                  <ReviewButton onClick={handleModal}>
+                    <ReviewAllButtonSpan>후기 모두 보기</ReviewAllButtonSpan>
+                  </ReviewButton>
+                </ReviewAll>
+                <ReviewWrite>
+                  <ReviewButton onClick={handleModal}>
+                    <ReviewWriteButtonSpan>
+                      후기 작성 하기
+                    </ReviewWriteButtonSpan>
+                  </ReviewButton>
+                </ReviewWrite>
+              </ReviewBottomButton>
+            </ReviewBottom>
+          </ReviewSection>
+        )}
       </ReviewArea>
       {isModalOn && (
         <ReviewModal
           handleModal={handleModal}
           grade={grade}
-          comment={comment}
+          reviews={reviews}
           isModalOn={isModalOn}
           setIsModalOn={setIsModalOn}
+          id={id}
         />
       )}
     </div>
@@ -115,6 +124,12 @@ const ReviewArea = styled.div`
   height: 100%;
   padding-top: 48px;
   padding-bottom: 48px;
+`;
+
+const ReviewNotYet = styled.div`
+  padding: 48px 0 48px 0;
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
 `;
 
 const ReviewSection = styled.section`

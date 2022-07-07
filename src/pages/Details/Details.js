@@ -4,15 +4,13 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import DetailsPicture from './components/DetailsPicture/DetailsPicture';
 import DetailsReservation from './components/DetailsReservation/DetailsReservation';
+import styled from 'styled-components';
 import Review from './components/Review';
 import DetailsMap from './components/DetailsMap';
 
-import styled from 'styled-components';
 const Details = () => {
   const params = useParams();
-
   const [roomDetailData, setRoomDetailData] = useState({});
-
   useEffect(() => {
     fetch(`http://52.79.248.152:8000/rooms/${params.id}`)
       .then(res => res.json())
@@ -20,14 +18,13 @@ const Details = () => {
         setRoomDetailData(data.room_info);
       });
   }, []);
-
   if (Object.keys(roomDetailData).length === 0) return <>loading...</>;
 
   return (
     <Main>
       <DetailsPicture roomDetailData={roomDetailData} />
       <DetailsReservation roomDetailData={roomDetailData} />
-      <Review />
+      <Review roomDetailData={roomDetailData} />
       <DetailsMap />
     </Main>
   );
