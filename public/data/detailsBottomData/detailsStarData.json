@@ -1,0 +1,8 @@
+[
+  { "id": 1, "item": "청결도", "grade": 4.9, "percent": 99 },
+  { "id": 2, "item": "정확성", "grade": 4.9, "percent": 99 },
+  { "id": 3, "item": "의사소통", "grade": 4.9, "percent": 99 },
+  { "id": 4, "item": "위치", "grade": 4.9, "percent": 99 },
+  { "id": 5, "item": "체크인", "grade": 4.9, "percent": 99 },
+  { "id": 6, "item": "가격 대비 만족도", "grade": 4.9, "percent": 99 }
+]
