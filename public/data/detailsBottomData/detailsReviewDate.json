@@ -1,0 +1,111 @@
+{
+  "id": 1,
+  "name": "오션뷰숙소",
+  "description": "성산일출봉과 해변 산책로가 예쁜 서귀포시 숙소",
+  "thumbnail_img": "https://cdn.pixabay.com/photo/2019/03/01/18/52/house-4028391_960_720.jpg",
+  "price": "52550.00",
+  "max_guest": 4,
+  "max_pet": 5,
+  "check_in": "15:00",
+  "check_out": "11:00",
+  "bedroom": "1",
+  "bed_count": "1",
+  "latitude": "33.440689",
+  "longitude": "126.920708",
+  "address": "제주특별자치도 서귀포시 성산읍 고성리 217",
+  "region": "서귀포시",
+  "images": [
+    "https://cdn.pixabay.com/photo/2019/03/01/18/52/house-4028391_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2016/04/18/08/50/kitchen-1336160_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2019/06/11/07/36/shiroyama-hiji-peak-4266254_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2016/03/04/19/36/beach-1236581_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2015/03/11/21/50/shutters-669296_960_720.jpg"
+  ],
+  "types": ["집 전체"],
+  "facilites": [
+    "수영장",
+    "와이파이",
+    "주방",
+    "무료 주차 공간",
+    "반려동물 동반 허용",
+    "사료와 물을 담을 그릇"
+  ],
+  "categories": [" 해변", " 풀빌라"],
+  "host": {
+    "id": 1,
+    "name": "We.Code",
+    "nickname": null,
+    "profile_img": "https://cdn.pixabay.com/photo/2017/11/06/13/45/cap-2923682__340.jpg",
+    "is_super_host": true
+  },
+  "review": {
+    "ratings_count": 8,
+    "ratings_avg": "4.125000",
+    "info": [
+      {
+        "id": 19,
+        "user_id": 7,
+        "user_name": "이강읜",
+        "user_profile_img": "https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295429__480.png",
+        "content": "아주 잘 쉬다갑니다^^ 성산일출봉도 보이구 바다도 바로 근처였고 위치도 좋아서 좋은 곳 많이 보고가요 ^^\n강아지 가족들도 너무 귀여웠어요!! 특히 애기들 7마리 ㅠ !",
+        "created_at": "2022-07-08 15:49"
+      },
+      {
+        "id": 17,
+        "user_id": 8,
+        "user_name": "손홍민",
+        "user_profile_img": "https://cdn.pixabay.com/photo/2017/08/30/23/42/football-2698974__340.jpg",
+        "content": "조용하게 쉬다 오기 너무 좋았어요!!",
+        "created_at": "2022-07-08 15:47"
+      },
+      {
+        "id": 16,
+        "user_id": 7,
+        "user_name": "이강읜",
+        "user_profile_img": "https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295429__480.png",
+        "content": "정말 멋진 방이에요! 다음에 또 오고 싶어요. 이렇게 깨끗한 방과 편안한 분위기입니다.",
+        "created_at": "2022-07-08 15:47"
+      },
+      {
+        "id": 14,
+        "user_id": 5,
+        "user_name": "이아유",
+        "user_profile_img": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png",
+        "content": "위치가 골목으로 들어가고 해서 밤에 찾아가기 조금 무섭지만 그것빼고는 정말 좋았습니다",
+        "created_at": "2022-07-08 15:47"
+      },
+      {
+        "id": 12,
+        "user_id": 3,
+        "user_name": "김승구",
+        "user_profile_img": "https://cdn.pixabay.com/photo/2017/06/01/07/31/elephant-2362696__480.png",
+        "content": "편히 잘 쉬다 갑니다 :)",
+        "created_at": "2022-07-08 15:47"
+      },
+      {
+        "id": 9,
+        "user_id": 9,
+        "user_name": "정이스",
+        "user_profile_img": "https://cdn.pixabay.com/photo/2020/10/04/10/43/horse-5625922__340.jpg",
+        "content": "너무 깔끔하고 따뜻한 숙소였습니다.\n아침마다 새소리와 햇빛에 잠을깨는 너무 좋은곳이였습니다~",
+        "created_at": "2022-07-08 15:47"
+      },
+      {
+        "id": 5,
+        "user_id": 5,
+        "user_name": "이아유",
+        "user_profile_img": "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png",
+        "content": "제주살이를 계획하는 분들께 강추하는 숙소입니다!!!",
+        "created_at": "2022-07-08 15:47"
+      },
+      {
+        "id": 1,
+        "user_id": 1,
+        "user_name": "김은경",
+        "user_profile_img": "http://k.kakaocdn.net/dn/z00xj/btq5fU3rU0b/0YTdd0NlKQNUeaR8uzFDDK/img_640x640.jpg",
+        "content": "일출봉 주변에 있는 숙소로 가격에 비하여 조용하고 청결한 곳입니다. 주인장께서 너무 친절하십니다. 조용하게 쉬기 원하시는 분들에게 적극 추천합니다.",
+        "created_at": "2022-07-08 15:47"
+      }
+    ]
+  }
+}

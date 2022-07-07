@@ -1,14 +1,41 @@
 import React from 'react';
 import variables from '../../../styles/variables';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 const ReviewModal = ({
   handleModal,
   grade,
-  comment,
+  reviews,
   isModalOn,
   setIsModalOn,
+  id,
 }) => {
+  const [userInputValue, setUserInputValue] = useState('');
+  const getUserInput = e => {
+    setUserInputValue(e.target.value);
+  };
+  const postUserInput = () => {
+    fetch('http://52.79.248.152:8000/reviews', {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+      body: JSON.stringify({
+        content: userInputValue,
+        ratings: '5',
+        image_url: '',
+        room_id: id,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          alert('후기등록이 완료 되었습니다.');
+        }
+      });
+  };
+
   return (
     <div>
       <ReviewModalArea onClick={() => setIsModalOn(!isModalOn)}>
@@ -38,37 +65,43 @@ const ReviewModal = ({
               <ReviewModalSerchBarAria>
                 <ReviewModalSerchBar>
                   <ReviewModalSerchIcon />
-                  <ReviewModalSerchAria>
-                    <ReviewModalSerch />
+                  <ReviewModalSerchAria
+                    onSubmit={e => {
+                      e.preventDefault();
+                      postUserInput();
+                    }}
+                  >
+                    <ReviewModalSerch onChange={getUserInput} />
+                    <ReviewModalButton type="submit">
+                      <ReviewModalButtonTxt>게시</ReviewModalButtonTxt>
+                    </ReviewModalButton>
                   </ReviewModalSerchAria>
                 </ReviewModalSerchBar>
-                <ReviewModalButton>
-                  <ReviewModalButtonTxt>게시</ReviewModalButtonTxt>
-                </ReviewModalButton>
               </ReviewModalSerchBarAria>
               <ReviewModalRead>
-                {comment.map(
-                  ({ id, profile_img, name, created_at, content }) => {
-                    return (
-                      <ReviewModalUserBox key={id}>
-                        <ReviewModalUser>
-                          <ReviewModalUserPhoto>
-                            <UserModalImg src={profile_img} />
-                          </ReviewModalUserPhoto>
-                          <ReviewModalUserInfo>
-                            <ReviewModalUserName>{name}</ReviewModalUserName>
-                            <ReviewModalUserDate>
-                              {created_at}
-                            </ReviewModalUserDate>
-                          </ReviewModalUserInfo>
-                        </ReviewModalUser>
-                        <ReviewModalUserTxtBox>
-                          <ReviewModalUserTxt>{content}</ReviewModalUserTxt>
-                        </ReviewModalUserTxtBox>
-                      </ReviewModalUserBox>
-                    );
-                  }
-                )}
+                {reviews &&
+                  reviews.map(
+                    ({ id, user_profile_img, name, created_at, content }) => {
+                      return (
+                        <ReviewModalUserBox key={id}>
+                          <ReviewModalUser>
+                            <ReviewModalUserPhoto>
+                              <UserModalImg src={user_profile_img} />
+                            </ReviewModalUserPhoto>
+                            <ReviewModalUserInfo>
+                              <ReviewModalUserName>{name}</ReviewModalUserName>
+                              <ReviewModalUserDate>
+                                {created_at}
+                              </ReviewModalUserDate>
+                            </ReviewModalUserInfo>
+                          </ReviewModalUser>
+                          <ReviewModalUserTxtBox>
+                            <ReviewModalUserTxt>{content}</ReviewModalUserTxt>
+                          </ReviewModalUserTxtBox>
+                        </ReviewModalUserBox>
+                      );
+                    }
+                  )}
               </ReviewModalRead>
             </ReviewModalUserAria>
           </ReviewModalSection>
@@ -191,7 +224,7 @@ const ReviewModalSerchBarAria = styled.div`
 `;
 
 const ReviewModalSerchBar = styled.div`
-  width: 85%;
+  width: 100%;
   margin-right: 10px;
 `;
 
@@ -223,6 +256,8 @@ const ReviewModalButtonTxt = styled.p`
 const ReviewModalSerchAria = styled.form`
   width: 100%;
   height: 50px;
+  display: flex;
+  justify-content: space-between;
 `;
 const ReviewModalSerch = styled.input`
   padding: 0 10px;
@@ -237,6 +272,7 @@ const ReviewModalSerch = styled.input`
   -webkit-appearance: none;
   appearance: none;
   font-size: 18px;
+  margin-right: 10px;
 `;
 
 const ReviewModalRead = styled.div`
