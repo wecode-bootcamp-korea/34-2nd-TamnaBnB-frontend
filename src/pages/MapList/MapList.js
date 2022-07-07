@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Map from './Map';
 import './MapList.css';
-import Card from '../Main/components/Card';
 
 const MapList = () => {
   return (
@@ -13,3 +12,5 @@ const MapList = () => {
     </>
   );
 };
+
+export default MapList;
