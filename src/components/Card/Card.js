@@ -34,7 +34,7 @@ const Card = ({ id, name, description, bedCount, price, rating, imgs }) => {
           </S.CardText>
 
           <S.CardTextRate>
-            {rating}
+            {Number(rating) ? Number(rating).toFixed(2) : 'NEW'}
             <i class="fas fa-star star" />
           </S.CardTextRate>
         </S.CardTexts>
