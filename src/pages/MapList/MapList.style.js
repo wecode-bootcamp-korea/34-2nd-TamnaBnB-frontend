@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 export const MapWrapper = styled.div`
   display: grid;
   grid-template-columns: 0.75fr 1fr;
-  margin-top: 100px;
+  padding-top: 100px;
   width: 100%;
 `;
 
 export const ToggleListWrapper = styled.div`
   ${props => props.theme.variables.flex('column', '', 'center')}
-  padding-top: 30px;
   height: calc(100vh - 100px);
   z-index: 2;
   overflow: scroll;

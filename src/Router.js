@@ -14,7 +14,7 @@ const Routers = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/details/:id" element={<Details />} />
-        <Route path="/maplist/:pageId" element={<MapList />} />
+        <Route path="/maplist/:pageId/rooms" element={<MapList />} />
         <Route path="/users/kakao-signin" element={<Kakao />} />
         <Route path="/test" element={<LoggedModal />} />
       </Routes>

@@ -98,8 +98,8 @@ const ProfileIcon = styled(FaUserCircle)`
 const UserPicture = styled.img`
   margin-left: 7px;
   width: 30px;
-  right: 30px;
+  height: 30px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
 `;
 export default LogIn;

@@ -24,8 +24,8 @@ const SelectRegion = ({ closeWhereModal, setClickedCity }) => {
 const ModalOutside = styled.div``;
 const SelectWrapper = styled.div`
   position: fixed;
-  left: 32%;
-  top: 18%;
+  left: 28%;
+  top: 160px;
   width: 200px;
   height: 100px;
   background-color: white;

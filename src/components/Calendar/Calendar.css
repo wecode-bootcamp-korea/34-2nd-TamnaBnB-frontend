@@ -1,20 +1,21 @@
 .react-datepicker {
-  position: absolute;
-  top: -15px;
+  position: fixed;
+  top: 160px;
   left: 0px;
   width: 680px;
-  height: 380px;
+  height: 385px;
   border: transparent;
   border-radius: 15px;
 }
 
 .react-datepicker__input-container > input {
-  position: fixed;
+  position: absolute;
   text-align: center;
   color: transparent;
   font-size: 13px;
-  left: 820px;
-  top: 81px;
+  left: 50%;
+  top: 70px;
+  transform: translateX(-50%);
   width: 200px;
   height: 57px;
   border: transparent;
@@ -53,7 +54,7 @@
 
 .react-datepicker__close-icon::after {
   position: fixed;
-  right: 860px;
+  right: 720px;
   top: 110px;
   width: 10px;
   height: 10px;
