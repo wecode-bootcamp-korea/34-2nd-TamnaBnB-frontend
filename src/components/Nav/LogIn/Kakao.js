@@ -10,7 +10,7 @@ const Kakao = () => {
   }).code;
 
   useEffect(() => {
-    fetch(`http://10.58.7.194:8000/users/kakao-signin?code=${code}`)
+    fetch(`http://52.79.248.152:8000/users/kakao-signin?code=${code}`)
       .then(res => res.json())
       .then(data => {
         if (data.access_token) {

@@ -45,7 +45,7 @@ const ModalOutside = styled.div``;
 const SelectWrapper = styled.div`
   position: fixed;
   left: 50%;
-  top: 18%;
+  top: 160px;
   width: 350px;
   height: 400px;
   background-color: white;

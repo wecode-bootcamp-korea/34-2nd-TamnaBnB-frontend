@@ -124,9 +124,10 @@ const ReserveSection = ({
     })
       .then(response => response.json())
       .then(result => {
-        if (result.message === 'SUCCESS') {
-          alert('예약이 완료 되었습니다.');
-        }
+        // if (result.message === 'SUCCESS') {
+        //   alert('예약이 완료 되었습니다.');
+        // }
+        alert('예약이 완료 되었습니다');
       });
   };
 

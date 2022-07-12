@@ -24,12 +24,20 @@ const MapList = () => {
     const { value } = e.target;
 
     if (value === 'leftBtn' && +pageId !== 1) {
-      navigate(`/maplist/${+pageId - 1}`);
+      navigate(
+        `/maplist/${
+          +pageId - 1
+        }/rooms?max_guest=${maxGuest}&max_pet=${maxPet}&check_in=false&check_out=false&region=${region}`
+      );
       return;
     }
 
     if (value === 'rightBtn' && +pageId !== 4) {
-      navigate(`/maplist/${+pageId + 1}`);
+      navigate(
+        `/maplist/${
+          +pageId + 1
+        }/rooms?max_guest=${maxGuest}&max_pet=${maxPet}&check_in=false&check_out=false&region=${region}`
+      );
       return;
     }
   };
@@ -82,7 +90,7 @@ const MapList = () => {
             .fill('_')
             .map((_, idx) => (
               <S.LinkEl
-                to={`/maplist/${idx + 1}`}
+                to={`/maplist/${idx + 1}/rooms`}
                 key={idx}
                 className={idx + 1 === +pageId ? 'clicked' : ''}
               >

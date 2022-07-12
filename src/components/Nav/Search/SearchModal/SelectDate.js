@@ -29,7 +29,7 @@ const SelectDate = ({ onChange, startDate, endDate, closeWhenModal }) => {
 };
 const ModalOutside = styled.div``;
 const SelectWrapper = styled.div`
-  position: fixed;
+  position: relative;
   left: 32%;
   top: 18%;
   width: 690px;

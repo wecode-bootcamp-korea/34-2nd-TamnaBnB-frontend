@@ -121,7 +121,7 @@ const VisitorInfoWrapper = styled.div`
 const RestBtn = styled.button`
   position: fixed;
   cursor: pointer;
-  right: 690px;
+  right: 500px;
   top: 99px;
   width: 35px;
   height: 35px;

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
 import DetailsPicture from './components/DetailsPicture/DetailsPicture';
 import DetailsReservation from './components/DetailsReservation/DetailsReservation';
 import styled from 'styled-components';
@@ -10,7 +11,9 @@ import DetailsMap from './components/DetailsMap';
 
 const Details = () => {
   const params = useParams();
+
   const [roomDetailData, setRoomDetailData] = useState({});
+
   useEffect(() => {
     fetch(`http://52.79.248.152:8000/rooms/${params.id}`)
       .then(res => res.json())
