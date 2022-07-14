@@ -2,46 +2,48 @@ import React, { useEffect, useRef, useState } from 'react';
 import Card from '../../components/Card/Card';
 import ThemeLi from './components/ThemeLi';
 import * as S from './Main.styles';
+import { MAP_LIST_API } from '../../config';
 
 const Main = () => {
   const [cardData, setCardData] = useState([]);
   const isLoading = useRef(false);
 
-  // < 데이터 get 요청 >
   useEffect(() => {
-    fetch('data/homeList.json')
-      // fetch('http://10.58.5.52:8000/rooms?offset=0&limit=15')
+    fetch(`${MAP_LIST_API.rooms}?offset=0&limit=12`)
       .then(res => res.json())
       .then(result => {
         setCardData(result.room_list);
       });
   }, []);
 
-  // < scroll이 다 내려왔을 경우, 실행되는 함수 >
   const handleScroll = () => {
     const scrollHeight = document.documentElement.scrollHeight;
+
     if (
       isLoading.current === false &&
-      window.innerHeight + window.scrollY >= scrollHeight - 100
+      window.innerHeight + window.scrollY >= scrollHeight - 300
     ) {
       isLoading.current = true;
-
       const lastId = cardData[cardData.length - 1].id;
 
-      fetch(`http://localhost:8000/api/main/rooms?offset=${lastId}&limit=15`) // offset = 0  15 30
+      fetch(`${MAP_LIST_API.rooms}?offset=${lastId}&limit=5`)
         .then(res => res.json())
         .then(result => {
-          setCardData(prev => [...prev, ...result.list]);
-          isLoading.current = result.last; // 마지막 데이터일때 false -> true로 하여  hadleScroll 함수실행 막기
+          setCardData(prev => {
+            return [...prev, ...result.room_list];
+          });
+
+          if (result.room_list[result.room_list.length - 1].id === 25) {
+            isLoading.current = true;
+            return;
+          }
+          isLoading.current = false;
         });
     }
   };
 
-  // < cardData가 업데이트 되면, scroll함수를 걸어준다. >
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-
-    // 추가데이터 받아와서 리렌더링 해줄때, scroll이벤트 삭제 (scroll이벤트는 스크롤 끝에부분으로 가야 작용되야 함.)
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
