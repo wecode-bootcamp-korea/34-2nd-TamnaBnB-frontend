@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { MAP_LIST_API } from '../../../src/config';
 import * as S from './MapList.style';
 import MapRender from './components/MapRender';
 import Card from '../../components/Card/Card';
 
 const MapList = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const { pageId } = useParams();
+
   const [roomData, setRoomData] = useState([]);
   const [totalPageNum, setTotalPageNum] = useState(0);
   const [show, setShow] = useState(true);
   const [hoverId, setHoverId] = useState();
+
+  const queryParams = new URLSearchParams(location.search);
+  const maxGuest = queryParams.get('max_guest');
+  const maxPet = queryParams.get('max_pet');
+  const region = queryParams.get('region');
 
   const arrowCount = e => {
     const { value } = e.target;
@@ -28,8 +35,11 @@ const MapList = () => {
   };
 
   useEffect(() => {
-    fetch('/data/homeList.json')
-      // fetch(`${MAP_LIST_API.rooms}?offset=${(+pageId - 1) * 8}&limit=8`)
+    fetch(
+      `${MAP_LIST_API.rooms}?offset=${
+        (+pageId - 1) * 8
+      }&limit=8&max_guest=${maxGuest}&max_pet=${maxPet}&region=${region}`
+    )
       .then(res => res.json())
       .then(result => {
         setTotalPageNum(25); // 서버에서 토탈 정보는 주지 않아 값을 바로 입력함
